@@ -14,7 +14,7 @@ class AddVotesToMenusTable extends Migration
     public function up()
     {
         Schema::table('menus', function (Blueprint $table) {
-            $table->integer('status')->comment('状态');
+            $table->integer('status');
         });
     }
 
