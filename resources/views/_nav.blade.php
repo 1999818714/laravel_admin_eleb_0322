@@ -16,51 +16,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">主页 <span class="sr-only">(current)</span></a></li>
                 <li><a href="http://shop.eleb.net/users">前台页面</a></li>
-                {{--<li class="dropdown">--}}
-                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">后台管理 <span class="caret"></span></a>--}}
-                    {{--<ul class="dropdown-menu">--}}
-                        {{--<li>1<a href="{{ route('shopCategory.index') }}">商家分类列表</a></li>--}}
-                        {{--<li>1<a href="{{ route('shops.index') }}">商家信息列表</a></li>--}}
-                        {{--<li>1<a href="{{ route('users.index') }}">商家账号列表</a></li>--}}
-                        {{--<li>1<a href="{{ route('activity.index') }}">活动管理列表</a></li>--}}
-                        {{--<li>1<a href="{{ route('admins.index') }}">管理员列表</a></li>--}}
-                        {{--<li><a href="{{ route('orders.index') }}">订单列表</a></li>--}}
-                        {{--<li><a href="{{ route('orderGoods.index') }}">订单商品列表</a></li>--}}
-                        {{--<li><a href="{{ route('members.index') }}">会员列表</a></li>--}}
-                        {{--<li><a href="{{ route('navs.index') }}">菜单列表</a></li>--}}
-                    {{--</ul>--}}
-                {{--</li>--}}
-            {{--</ul>--}}
-            {{--<ul class="nav navbar-nav">--}}
-                {{--<li class="dropdown">--}}
-                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">RBAC管理<span class="caret"></span></a>--}}
-                    {{--<ul class="dropdown-menu">--}}
-                        {{--<li><a href="{{ route('rbac.index') }}">测试RBAC</a></li>--}}
-                        {{--<li><a href="{{ route('permissions.index') }}">权限列表</a></li>--}}
-                        {{--<li><a href="{{ route('permissions.create') }}">添加权限列表</a></li>--}}
-                        {{--<li><a href="{{ route('roles.index') }}">角色列表</a></li>--}}
-                        {{--<li><a href="{{ route('roles.create') }}">添加角色列表</a></li>--}}
-                    {{--</ul>--}}
-                {{--</li>--}}
                 {!! \App\Models\Nav::getNavHtml() !!}
-
-            </ul>
-
-
-            <ul class="nav navbar-nav">
-                {{--@foreach(\App\Models\Nav::where('pid',0)->get() as $nav)--}}
-                {{--<li class="dropdown">--}}
-                        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ $nav->name }}<span class="caret"></span></a>--}}
-                    {{--<ul class="dropdown-menu">--}}
-{{--                        @foreach(\App\Models\Nav::where('pid',$nav->id)->get() as $child)--}}
-                        {{--@foreach($nav->children as $child)--}}
-                            {{--@if(auth()->user()->can($child->Permission->name))--}}
-                                {{--<li><a href="{{ route($child->url) }}">{{ $child->name }}</a></li>--}}
-                            {{--@endif--}}
-                        {{--@endforeach--}}
-                    {{--</ul>--}}
-                {{--</li>--}}
-                {{--@endforeach--}}
             </ul>
 
             <form class="navbar-form navbar-left">
