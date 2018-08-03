@@ -43,7 +43,7 @@ class Nav extends Model
                 if(!$child->Permission){
                     dd($child);
                 }
-                if(auth()->user()->can($child->Permission->name)){
+                if(auth()->user()->can($child->Permission->name)  ){
                     $children_html .= '<li><a href="'.route($child->url).'">'.$child->name.'</a></li>';
                 }
             }

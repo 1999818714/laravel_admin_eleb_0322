@@ -16,7 +16,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">主页 <span class="sr-only">(current)</span></a></li>
                 <li><a href="http://shop.eleb.net/users">前台页面</a></li>
-                {!! \App\Models\Nav::getNavHtml() !!}
+                @auth{!! \App\Models\Nav::getNavHtml() !!}@endauth
             </ul>
 
             <form class="navbar-form navbar-left">
