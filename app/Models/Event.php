@@ -16,4 +16,8 @@ class Event extends Model
         'signup_num',
         'is_prize',
     ];
+
+
+
+
 }

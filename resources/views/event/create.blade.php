@@ -33,13 +33,13 @@
         <span class="input-group-addon" id="basic-addon1">报名人数限制</span>
         <input type="number" name="signup_num" style="width:400px"  class="form-control" placeholder="人数限制？" aria-describedby="basic-addon1">
     </div><br>
-    <div  class="input-group" style="width:200px;">
-        <span class="input-group-addon" id="basic-addon1">是否已经开奖</span>
-        <select name="is_prize" class="form-control">
-            <option value="1">是</option>
-            <option value="0">否</option>
-        </select>
-    </div><br>
+    {{--<div  class="input-group" style="width:200px;">--}}
+        {{--<span class="input-group-addon" id="basic-addon1">是否已经开奖</span>--}}
+        {{--<select name="is_prize" class="form-control">--}}
+            {{--<option value="1">是</option>--}}
+            {{--<option value="0">否</option>--}}
+        {{--</select>--}}
+    {{--</div><br>--}}
     {{ csrf_field() }}
     <br> <br>
     <input type="submit" class="btn btn-primary" value="确认">

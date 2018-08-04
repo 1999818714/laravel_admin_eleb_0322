@@ -45,13 +45,13 @@
                value="@if(old('signup_num')){{ old('signup_num') }}@else{{ $event->signup_num }}@endif"
         >
     </div><br>
-    <div  class="input-group" style="width:200px;">
-        <span class="input-group-addon" id="basic-addon1">是否已经开奖</span>
-        <select name="is_prize" class="form-control">
-            <option value="1" @if($event->is_prize == 1)selected @endif >是</option>
-            <option value="0" @if($event->is_prize == 0)selected @endif >否</option>
-        </select>
-    </div><br>
+    {{--<div  class="input-group" style="width:200px;">--}}
+        {{--<span class="input-group-addon" id="basic-addon1">是否已经开奖</span>--}}
+        {{--<select name="is_prize" class="form-control">--}}
+            {{--<option value="1" @if($event->is_prize == 1)selected @endif >是</option>--}}
+            {{--<option value="0" @if($event->is_prize == 0)selected @endif >否</option>--}}
+        {{--</select>--}}
+    {{--</div><br>--}}
     {{ method_field('PATCH') }}
     {{ csrf_field() }}
     <br> <br>

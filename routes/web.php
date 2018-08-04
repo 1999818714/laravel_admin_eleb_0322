@@ -144,15 +144,20 @@ Route::resource('navs','NavsController');
 
 //抽奖活动表
 Route::resource('events','EventsController');
-//抽奖活动表
-Route::resource('eventPrizes','EventsPrizesController');
-//抽奖活动表
-Route::resource('eventMembers','EventsMembersController');
+Route::get('/prizes','EventsController@prizes')->name('prizes.index');//活动奖品列表
+Route::get('/prizes/create','EventsController@prizesCreate')->name('prizes.create');//添加活动奖品页面
+Route::post('/prizes','EventsController@prizesStore')->name('prizes.store');//添加活动奖品功能
+Route::get('/prizes/{prize}/edit','EventsController@prizesEdit')->name('prizes.edit');//修改活动奖品页面
+Route::patch('/prizes/{prize}','EventsController@prizesUpdate')->name('prizes.update');//修改活动奖品功能
+Route::delete('/prizes/{prize}','EventsController@prizesDestroy')->name('prizes.destroy');//删除活动奖品功能
+//活动奖品表
+Route::resource('eventPrizes','EventPrizesController');
+//活动报名表
+Route::resource('eventMembers','EventMembersController');
 
 //Route::get('/articles', 'articlesController@index')->name('articles.index');//用户列表
 //Route::get('/articles/{user}', 'articlesController@show')->name('articles.show');//查看单个用户信息
-//Route::get('/articles/create', '
-//articlesController@create')->name('articles.create');//显示添加表单
+//Route::get('/articles/create', 'articlesController@create')->name('articles.create');//显示添加表单
 //Route::post('/articles', 'articlesController@store')->name('articles.store');//接收添加表单数据
 //Route::get('/articles/{user}/edit', 'articlesController@edit')->name('articles.edit');//修改用户表单
 //Route::patch('/articles/{user}', 'articlesController@update')->name('articles.update');//更新用户信息

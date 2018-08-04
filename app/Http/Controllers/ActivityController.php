@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ActivityController extends Controller
 {
@@ -19,8 +20,8 @@ class ActivityController extends Controller
     //活动列表
     public function index()
     {
-        $activity = Activity::paginate(5);//包含分页
-        return view('activity/index',compact('activity'));
+        $activitys = Activity::paginate(5);//包含分页
+        return view('activity/index',compact('activitys'));
     }
     //添加活动页面
     public function create()
@@ -56,6 +57,66 @@ class ActivityController extends Controller
         session()->flash('success','添加活动成功');
         return redirect()->route('activity.index');//跳转到
     }
+
+    //添加活动页面
+    public function edit(Activity $activity)
+    {
+//        dd($activity);
+        return view('activity/edit',compact('activity'));
+    }
+    //添加活动功能
+    public function update(Activity $activity,Request $request)
+    {
+        //验证数据
+        $this->validate($request,[
+            'title'=>['required','max:20',Rule::unique('activities')->ignore($activity->id)],
+            'content'=>'required',
+            'start_time'=>'required',
+            'end_time'=>'required',
+        ],[
+            'title.required'=>'活动名不能为空',
+            'title.max'=>'活动名不能大于20个字',
+            'title.unique'=>'活动名已存在',
+            'content.required'=>'活动内容不能为空',
+            'start_time.required'=>'请设置开始时间',
+            'end_time.required'=>'请设置结束时间',
+            'end_time'=>'请设置结束时间',
+        ]);
+
+        $activity->update([
+            'title'=>$request->title,
+            'content'=>$request->content,
+            'start_time'=>$request->start_time,
+            'end_time'=>$request->end_time,
+        ]);
+        //设置提示信息
+        session()->flash('success','修改活动成功');
+        return redirect()->route('activity.index');//跳转到
+    }
+
+
+
+
+
+
+
+
+
+    //查看活动奖品详情
+    public function show(Activity $activity)
+    {
+//        dd(1);
+        return view('activity/show',compact('activity'));
+    }
+
+
+
+
+
+
+
+
+
 
     //文件接收服务端
     public function upload()

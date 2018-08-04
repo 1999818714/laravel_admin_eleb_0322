@@ -6,25 +6,33 @@
     @include('vendor.ueditor.assets'){{--//文本编译器专用--}}
 @stop
 @section('contents')
-<form class="form" method="post" action="{{ route('activity.store') }}">
+<form class="form" method="post" action="{{ route('activity.update',[$activity]) }}">
     <h1 class="container">测试上传图片到阿里云服务器配置是否成功</h1>
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">活动标题</span>
-        <input type="text" name="title" style="width:500px"  class="form-control" placeholder="活动标题？" aria-describedby="basic-addon1">
+        <input type="text" name="title" style="width:500px"  class="form-control" placeholder="活动标题？" aria-describedby="basic-addon1"
+               value="@if(old('title')){{ old('title') }}@else{{ $activity->title }}@endif"
+        >
     </div><br>
     <div class="input-group">
         <span id="basic-addon1">活动详情</span>
         <!-- 编辑器容器 -->
-        <script id="container" name="content" type="text/plain"></script>
+        <script id="container" name="content" type="text/plain">@if(old('content')){!!  old('content')!!}@else{!! $activity->content !!}@endif</script>
     </div><br>
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">活动开始时间</span>
-        <input type="date" name="start_time" style="width:500px"  class="form-control" placeholder="名字？" aria-describedby="basic-addon1">
+        <input type="date" name="start_time" style="width:500px"  class="form-control" placeholder="名字？" aria-describedby="basic-addon1"
+{{--               value="@if(old('start_time')){{ old('start_time') }}@else{{ date('Y-m-d',$activity->start_time )}}@endif"--}}
+{{--               value="{{ date('Y-m-d\TH:i:s',$activity->start_time ) }}"--}}
+        >
     </div><br>
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">活动结束时间</span>
-        <input type="date" name="end_time" style="width:500px"  class="form-control" placeholder="名字？" aria-describedby="basic-addon1">
+        <input type="date" name="end_time" style="width:500px"  class="form-control" placeholder="名字？" aria-describedby="basic-addon1"
+{{--               value="@if(old('end_time')){{ old('end_time') }}@else{{ date('Y-m-d',$activity->end_time )}}@endif"--}}
+        >
     </div><br>
+    {{ method_field('PATCH') }}
     {{ csrf_field() }}
     <input type="submit" class="btn btn-primary" value="提交">
 </form>
