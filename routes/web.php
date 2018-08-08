@@ -150,10 +150,26 @@ Route::post('/prizes','EventsController@prizesStore')->name('prizes.store');//�
 Route::get('/prizes/{prize}/edit','EventsController@prizesEdit')->name('prizes.edit');//修改活动奖品页面
 Route::patch('/prizes/{prize}','EventsController@prizesUpdate')->name('prizes.update');//修改活动奖品功能
 Route::delete('/prizes/{prize}','EventsController@prizesDestroy')->name('prizes.destroy');//删除活动奖品功能
+Route::get('/obIndex','EventsController@obIndex')->name('obIndex.index');//静态页面
+Route::get('/obIntro','EventsController@obIntro')->name('obIntro.index');//静态页面
 //活动奖品表
 Route::resource('eventPrizes','EventPrizesController');
 //活动报名表
 Route::resource('eventMembers','EventMembersController');
+
+//测试中文分词搜索
+Route::get('/search',function (){
+    $cl = new \App\SphinxClient();
+    $cl->SetServer ( '127.0.0.1', 9312);
+    $cl->SetConnectTimeout ( 10 );
+    $cl->SetArrayResult ( true );
+    $cl->SetMatchMode ( SPH_MATCH_EXTENDED2);
+    $cl->SetLimits(0, 1000);
+    $info = '蔬菜小店';
+//    $info = request()->name;
+    $res = $cl->Query($info, 'shop');//shop这个是索引，要匹配#源定义source shop
+    dd($res);
+});
 
 //Route::get('/articles', 'articlesController@index')->name('articles.index');//用户列表
 //Route::get('/articles/{user}', 'articlesController@show')->name('articles.show');//查看单个用户信息

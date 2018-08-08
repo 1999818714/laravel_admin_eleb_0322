@@ -14,7 +14,7 @@
         <td>{{ $eventPrize->id }}</td>
         <td>{{ $eventPrize->getEvents->title??'' }}</td>
         <td>{{ $eventPrize->name }}</td>
-        <td>{{ $eventPrize->getMembers->username??'暂无用户中奖' }}</td>
+        <td>{{ $eventPrize->getUsers->name??'无' }}</td>
         <td>
             <a href="{{ route('eventPrizes.edit',[$eventPrize]) }}" role="button" class="btn btn-primary">编辑</a>
             <a href="{{ route('eventPrizes.show',[$eventPrize]) }}" role="button" class="btn btn-primary">活动奖品详情</a>

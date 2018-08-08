@@ -131,6 +131,11 @@ class EventsController extends Controller
     //查看
     public function show(Event $event)
     {
+
+        //获得活动数据
+        $content = view('event/show',compact('event'));//跳转
+        file_put_contents('../resources/views/ob/obIntro.html',$content);
+
         return view('event/show',compact('event'));//跳转
     }
 
@@ -229,4 +234,25 @@ class EventsController extends Controller
         return redirect()->route('prizes.index',['id'=>$request->id]);//跳转['id'=>$request->id]是为了保证是本活动
     }
 
+    
+    //创建活动静态页列表
+    public function obIndex()
+    {
+//        ob_start();
+//        $c = ob_get_contents();//获取页面输出内容
+//        file_put_contents('123.html',$c);
+
+        //获得活动数据
+        $events = Event::paginate(5);
+        $content = view('event/index',compact('events'));
+        file_put_contents('/b/obIndex.html',$content);
+    }
+    //创建活动详情静态页列表
+    public function obIntro()
+    {
+        //获得活动数据
+//        $content = view('event/show',compact('event'));//跳转
+//        file_put_contents('obIntro.html',$content);
+    }
+    
 }

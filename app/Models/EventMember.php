@@ -18,9 +18,9 @@ class EventMember extends Model
     }
 
     //建立和报名商家账号的关系 一对多（反向）   一（多）对一   articles.author_id ---> students.id
-    public function getMembers()
+    public function getUsers()
     {
-        return $this->belongsTo(Member::class,'member_id','id');
+        return $this->belongsTo(Users::class,'member_id','id');
     }
 
 
